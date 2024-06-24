@@ -15,6 +15,7 @@
 > 详情参考官方详细[参数示例](https://beta.openai.com/examples)
 
 # 更新记录
+- [x] fix: 支持gpt-4模型，修改前端空白BUG。 2023-03-30
 - [x] fix: 增加用户模块，认证页面，接口jwt验证。 2023-03-27
 - [x] fix: 修复前端富文本显示问题，优化dockerfile。 2023-03-27
 - [x] fix: 优化前端显示界面。 2023-03-20
@@ -215,12 +216,6 @@ server {
         proxy_http_version 1.1;
         # 反向代理超时时间设定(OpenAI的反应比较慢，设定为120秒后才超时)
         proxy_read_timeout 120s;
-
-        # 将index.html中的绝对路径更改为相对路径
-        sub_filter 'src="/' 'src="';
-        sub_filter 'href="/' 'href="';
-        sub_filter_types text/html;
-        sub_filter_once off;
     }
 
     # 如果chatgpt-web放置于根路径，使用这个location配置
